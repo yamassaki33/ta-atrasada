@@ -8,57 +8,70 @@
       margin: 0;
       height: 100vh;
       background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      user-select: none;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-      user-select: none;
       position: relative;
     }
+
     h1 {
-      margin-bottom: 30px;
       font-size: 2.5rem;
+      margin-bottom: 40px;
+      z-index: 10;
     }
-    button {
+
+    #nao, #sim {
       font-size: 1.5rem;
       padding: 10px 25px;
       cursor: pointer;
+      user-select: none;
       position: absolute;
-      transition: top 0.3s, left 0.3s;
+      z-index: 10;
     }
+
     #nao {
-      top: 60%;
-      left: 40%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: top 0.3s ease, left 0.3s ease;
     }
+
     #sim {
       display: none;
-      top: 60%;
+      top: 70%;
       left: 50%;
       transform: translateX(-50%);
     }
+
     #imagemBeijo {
-      margin-top: 20px;
-      max-width: 80vw;
-      max-height: 60vh;
       display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80vw;
+      max-height: 80vh;
       border-radius: 10px;
-      box-shadow: 0 0 20px white;
-      position: relative;
-      top: 100px;
+      box-shadow: 0 0 30px white;
+      z-index: 20;
+      background-color: rgba(0,0,0,0.7);
+      padding: 10px;
     }
   </style>
 </head>
 <body>
   <h1>Me dá um beijo?</h1>
-  
+
   <button id="nao">Não</button>
   <button id="sim">Sim</button>
-  
+
   <img id="imagemBeijo" src="https://i.pinimg.com/736x/b9/1f/55/b91f55dfb99758464a6eb8b691508a12.jpg" alt="Beijo" />
-  
+
   <script>
     const naoBtn = document.getElementById('nao');
     const simBtn = document.getElementById('sim');
@@ -96,6 +109,4 @@
       naoBtn.style.top = novoTop + 'px';
       naoBtn.style.left = novoLeft + 'px';
     }
-  </script>
-</body>
-</html>
+
