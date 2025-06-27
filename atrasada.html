@@ -55,18 +55,12 @@
       color: white;
     }
 
-    #imagemBeijo {
+    #dancarino {
       display: none;
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 80vw;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 30px blue;
-      background-color: rgba(0, 0, 50, 0.8);
-      padding: 10px;
+      bottom: 20px;
+      right: 20px;
+      width: 200px;
       z-index: 20;
     }
   </style>
@@ -77,12 +71,16 @@
   <button id="nao">Não</button>
   <button id="sim">Sim</button>
 
-  <img id="imagemBeijo" src="https://i.pinimg.com/736x/b9/1f/55/b91f55dfb99758464a6eb8b691508a12.jpg" alt="Beijo" />
+  <img id="dancarino" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Dançarino" />
+
+  <!-- Música cortada localmente -->
+  <audio id="musica" src="trecho_backstreet.mp3" loop></audio>
 
   <script>
     const naoBtn = document.getElementById('nao');
     const simBtn = document.getElementById('sim');
-    const imgBeijo = document.getElementById('imagemBeijo');
+    const dancarino = document.getElementById('dancarino');
+    const musica = document.getElementById('musica');
     const maxTentativas = 8;
     let tentativas = 0;
 
@@ -99,7 +97,8 @@
 
     simBtn.addEventListener('click', () => {
       simBtn.style.display = 'none';
-      imgBeijo.style.display = 'block';
+      dancarino.style.display = 'block';
+      musica.play();
     });
 
     function moverBotaoNao() {
