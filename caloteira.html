@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Me dá um beijo?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      user-select: none;
+      position: relative;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+    button {
+      font-size: 1.5rem;
+      padding: 10px 25px;
+      cursor: pointer;
+      position: absolute;
+      transition: top 0.3s, left 0.3s;
+    }
+    #nao {
+      /* Inicial, posicionado no centro */
+      top: 60%;
+      left: 40%;
+    }
+    #sim {
+      display: none;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #imagemBeijo {
+      margin-top: 20px;
+      max-width: 80vw;
+      max-height: 60vh;
+      display: none;
+      border-radius: 10px;
+      box-shadow: 0 0 20px white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Me dá um beijo?</h1>
+  
+  <button id="nao">Não</button>
+  <button id="sim">Sim</button>
+  
+  <!-- Troque o valor do src da imagem pela sua imagem! -->
+  <img id="imagemBeijo" src="" alt="Beijo" />
+  
+  <script>
+    const naoBtn = document.getElementById('nao');
+    const simBtn = document.getElementById('sim');
+    const imgBeijo = document.getElementById('imagemBeijo');
+    const maxTentativas = 8;
+    let tentativas = 0;
+
+    naoBtn.addEventListener('mouseenter', () => {
+      if (tentativas < maxTentativas) {
+        moverBotaoNao();
+        tentativas++;
+        if (tentativas === maxTentativas) {
+          // Esconde o botão "Não" após 8 tentativas
+          naoBtn.style.display = 'none';
+          // Mostra o botão "Sim"
+          simBtn.style.display = 'block';
+        }
+      }
+    });
+
+    simBtn.addEventListener('click', () => {
+      // Ao clicar em sim, mostrar a imagem
+      simBtn.style.display = 'none';
+      imgBeijo.style.display = 'block';
+    });
+
+    function moverBotaoNao() {
+      const btnWidth = naoBtn.offsetWidth;
+      const btnHeight = naoBtn.offsetHeight;
+      const padding = 20; // evitar que o botão fique colado nas bordas
+      
+      const maxWidth = window.innerWidth - btnWidth - padding;
+      const maxHeight = window.innerHeight - btnHeight - padding;
+
+      // Gera posições aleatórias para top e left dentro da viewport
+      const novoTop = Math.floor(Math.random() * maxHeight) + padding;
+      const novoLeft = Math.floor(Math.random() * maxWidth) + padding;
+
+      naoBtn.style.top = novoTop + 'px';
+      naoBtn.style.left = novoLeft + 'px';
+    }
+  </script>
+</body>
+</html>
